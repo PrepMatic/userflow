@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrepMatic User Journey - Visual Storyboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #1E3A8A;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(96, 165, 250, 0.2);
+        }
+        
+        .header h1 {
+            color: #60A5FA;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .user-profile {
+            background: #FFFFFF;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #60A5FA, #A5B4FC);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .storyboard {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .story-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(96, 165, 250, 0.15);
+            border-left: 5px solid #60A5FA;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #E0F2FE, transparent);
+            border-radius: 0 0 0 100px;
+        }
+        
+        .panel-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .step-number {
+            background: #60A5FA;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .panel-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #1E3A8A;
+        }
+        
+        .timeline {
+            background: #A5B4FC;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-left: auto;
+        }
+        
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 25px;
+            align-items: start;
+        }
+        
+        .visual-element {
+            background: #F0F9FF;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px dashed #60A5FA;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .mock-phone, .mock-dashboard, .mock-results {
+            background: #1E3A8A;
+            color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .progress-bar {
+            background: #E0F2FE;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #60A5FA, #A5B4FC);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .metric-card {
+            background: #E0F2FE;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #60A5FA;
+        }
+        
+        .quote {
+            background: #A5B4FC;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-style: italic;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 3em;
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            opacity: 0.3;
+        }
+        
+        .key-insight {
+            background: linear-gradient(135deg, #60A5FA, #A5B4FC);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(96, 165, 250, 0.3);
+        }
+        
+        .emoji {
+            font-size: 2em;
+            margin: 10px;
+        }
+        
+        .flow-arrows {
+            text-align: center;
+            font-size: 2em;
+            color: #60A5FA;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .metrics {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .highlight {
+            background: #FEF3C7;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .success-indicator {
+            background: #10B981;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+        
+        .challenge-indicator {
+            background: #EF4444;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>PrepMatic User Journey</h1>
+            <p style="font-size: 1.2em; color: #6B7280;">How AI-Powered Exam Prep Transforms a UPSC Aspirant's Journey</p>
+        </div>
+        
+        <div class="user-profile">
+            <div class="avatar">P</div>
+            <div>
+                <h3>Meet Priya Sharma</h3>
+                <p><strong>Age:</strong> 25 | <strong>Background:</strong> Engineering | <strong>Goal:</strong> UPSC Civil Services</p>
+                <p><strong>Challenge:</strong> Working professional, limited time, previous attempt failed</p>
+                <p><strong>Available Time:</strong> 2 hrs weekdays, 6 hrs weekends</p>
+            </div>
+        </div>
+        
+        <div class="storyboard">
+            <!-- Panel 1: Discovery -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">1</div>
+                    <div class="panel-title">Discovery & First Impression</div>
+                    <div class="timeline">Day 1</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">📱</div>
+                        <div class="mock-phone">
+                            <div style="background: #60A5FA; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                                PrepMatic - AI UPSC Coach
+                            </div>
+                            <div style="font-size: 0.8em;">✨ Personalized Study Plans</div>
+                            <div style="font-size: 0.8em;">🎯 AI Mock Tests</div>
+                            <div style="font-size: 0.8em;">📊 Progress Tracking</div>
+                        </div>
+                        <p><strong>Facebook Ad → Sign Up</strong></p>
+                    </div>
+                    <div>
+                        <h4>The Hook</h4>
+                        <p>Priya sees PrepMatic ad during lunch break. Unlike generic study apps, the <span class="highlight">UPSC-specific branding</span> catches her attention.</p>
+                        
+                        <div class="quote">
+                            Finally, something made specifically for UPSC aspirants like me!
+                        </div>
+                        
+                        <p><strong>What Worked:</strong></p>
+                        <ul>
+                            <li>Clean, professional sky-blue design</li>
+                            <li>UPSC testimonials from real aspirants</li>
+                            <li>Free trial removes signup friction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 2: Onboarding -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">2</div>
+                    <div class="panel-title">Smart Onboarding & Assessment</div>
+                    <div class="timeline">Day 1-2</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">📋</div>
+                        <div style="background: white; border: 2px solid #60A5FA; border-radius: 10px; padding: 15px; margin: 10px 0;">
+                            <div><strong>Exam:</strong> UPSC Civil Services</div>
+                            <div><strong>Date:</strong> June 2026</div>
+                            <div><strong>Level:</strong> Intermediate</div>
+                            <div style="color: #EF4444;"><strong>Weakness:</strong> Geography, Current Affairs</div>
+                            <div style="color: #10B981;"><strong>Strength:</strong> History, Essays</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>AI Learns About Priya</h4>
+                        <p>The onboarding questionnaire captures crucial data:</p>
+                        
+                        <div class="metrics">
+                            <div class="metric-card">
+                                <div class="metric-value">2nd</div>
+                                <div>Attempt</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">18</div>
+                                <div>Months Left</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">14</div>
+                                <div>Hours/Week</div>
+                            </div>
+                        </div>
+                        
+                        <div class="key-insight">
+                            <strong>🎯 AI Insight:</strong> Previous attempt scored 78/100 in Prelims (needed 85+). Geography and Current Affairs are critical improvement areas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 3: BYOM -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">3</div>
+                    <div class="panel-title">Bring Your Own Material (BYOM)</div>
+                    <div class="timeline">Day 2</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">📚</div>
+                        <div style="background: #F0F9FF; border: 2px dashed #60A5FA; border-radius: 10px; padding: 15px; margin: 10px 0;">
+                            <div>📄 Coaching Notes (15 PDFs)</div>
+                            <div>📖 eBooks (12 files)</div>
+                            <div>📝 Previous Papers</div>
+                            <div>📸 Handwritten Notes</div>
+                        </div>
+                        <div style="margin-top: 10px; color: #10B981; font-weight: bold;">
+                            ✅ AI Processing Complete
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Content Intelligence</h4>
+                        <p>Priya uploads her existing study materials. PrepMatic's AI:</p>
+                        
+                        <ul>
+                            <li><strong>Scans & Categorizes:</strong> Automatically sorts content by subjects</li>
+                            <li><strong>Creates Question Bank:</strong> Generates questions from her actual notes</li>
+                            <li><strong>Tags Difficulty:</strong> Identifies basic vs advanced topics</li>
+                            <li><strong>Makes Searchable:</strong> Can find any concept instantly</li>
+                        </ul>
+                        
+                        <div class="quote">
+                            This is genius! It organized all my scattered notes automatically.
+                        </div>
+                        
+                        <p><strong>🔑 Key Differentiator:</strong> Unlike ChatGPT, PrepMatic remembers and builds upon her specific study materials.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 4: AI Timetable -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">4</div>
+                    <div class="panel-title">Personalized AI Timetable</div>
+                    <div class="timeline">Day 2-3</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">🗓️</div>
+                        <div class="mock-dashboard">
+                            <div style="background: #60A5FA; padding: 8px; border-radius: 5px; margin-bottom: 10px;">
+                                Monday Schedule
+                            </div>
+                            <div style="font-size: 0.8em; text-align: left;">
+                                6:00-6:30 AM: Current Affairs ⚠️<br>
+                                6:30-7:00 AM: Geography 📍<br>
+                                7:00-7:30 AM: History Review ✅
+                            </div>
+                        </div>
+                        <div style="font-size: 0.9em; margin-top: 10px;">
+                            <span style="color: #EF4444;">40% Weak Areas</span> |
+                            <span style="color: #10B981;">35% Core</span> |
+                            <span style="color: #60A5FA;">25% Revision</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Intelligent Schedule Creation</h4>
+                        <p>AI creates a personalized timetable based on:</p>
+                        
+                        <ul>
+                            <li><strong>Weakness Focus:</strong> Extra time for Geography & Current Affairs</li>
+                            <li><strong>Optimal Timing:</strong> Tough subjects at 6 AM (her peak time)</li>
+                            <li><strong>Exam Timeline:</strong> 18 months = detailed subject coverage first</li>
+                            <li><strong>Learning Style:</strong> Visual methods for Geography</li>
+                        </ul>
+                        
+                        <div class="key-insight">
+                            <strong>🧠 AI Logic:</strong> Allocates study time inversely proportional to current performance - weaker subjects get more attention automatically.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 5: Daily Study Flow -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">5</div>
+                    <div class="panel-title">Daily Study Flow & Habit Building</div>
+                    <div class="timeline">Day 3-10</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">📈</div>
+                        <div style="text-align: left;">
+                            <div style="font-weight: bold; margin-bottom: 10px;">Week 1 Progress:</div>
+                            <div>Current Affairs: <div class="progress-bar" style="width: 100%;"><div class="progress-fill" style="width: 75%;"></div></div></div>
+                            <div>Geography: <div class="progress-bar" style="width: 100%;"><div class="progress-fill" style="width: 45%;"></div></div></div>
+                            <div>History: <div class="progress-bar" style="width: 100%;"><div class="progress-fill" style="width: 85%;"></div></div></div>
+                        </div>
+                        <div class="success-indicator">🔥 7-day Streak!</div>
+                    </div>
+                    <div>
+                        <h4>Building Study Momentum</h4>
+                        <p>Priya starts her daily routine. The system tracks every interaction:</p>
+                        
+                        <ul>
+                            <li><strong>Morning Sessions:</strong> Consistently completing 6 AM slots</li>
+                            <li><strong>Smart Tracking:</strong> AI notices Geography takes 40% longer</li>
+                            <li><strong>Auto-Adaptation:</strong> Reduces Geography targets, increases revision</li>
+                            <li><strong>Motivation:</strong> Streak counters and daily achievements</li>
+                        </ul>
+                        
+                        <div class="quote">
+                            The morning notifications actually help me stick to my schedule. It feels like having a study buddy.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 6: First Mock Test -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">6</div>
+                    <div class="panel-title">First AI-Generated Mock Test</div>
+                    <div class="timeline">Day 10</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">📝</div>
+                        <div class="mock-results">
+                            <div style="font-size: 1.2em; margin-bottom: 10px;">Mock Test Results</div>
+                            <div style="font-size: 2em; color: #60A5FA;">32/50</div>
+                            <div style="font-size: 1.1em;">(64%)</div>
+                            <div style="font-size: 0.8em; margin-top: 10px;">
+                                Current Affairs: 18/25 ✅<br>
+                                Geography: 14/25 ⚠️
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Intelligent Assessment</h4>
+                        <p>AI generates test from Priya's uploaded coaching notes:</p>
+                        
+                        <div class="metrics">
+                            <div class="metric-card">
+                                <div class="metric-value">50</div>
+                                <div>Questions</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">60%</div>
+                                <div>From Weak Areas</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">55/60</div>
+                                <div>Minutes Used</div>
+                            </div>
+                        </div>
+                        
+                        <div class="key-insight">
+                            <strong>🎯 AI Recommendation:</strong> "Strong in current political developments, weak in physical geography. Focus on Indian geography basics this week."
+                        </div>
+                        
+                        <p><strong>Smart Features:</strong> Questions prioritize her weak areas, detailed explanations for wrong answers, automatic timetable adjustment based on results.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 7: The Dip & Recovery -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">7</div>
+                    <div class="panel-title">Performance Dip & AI Recovery</div>
+                    <div class="timeline">Day 15-25</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">💪</div>
+                        <div style="text-align: left;">
+                            <div class="challenge-indicator">Day 15: Missed 3 Days</div>
+                            <div style="margin: 10px 0; font-size: 0.9em;">
+                                📱 "Quick 10-min Geography quiz?"<br>
+                                🎯 "5 current affairs questions"<br>
+                                📊 Auto-rescheduled missed topics
+                            </div>
+                            <div class="success-indicator">Day 25: Back on Track!</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Adaptive Support System</h4>
+                        <p>When Priya faces work pressure and misses study days:</p>
+                        
+                        <ul>
+                            <li><strong>No Punishment:</strong> System understands life happens</li>
+                            <li><strong>Smart Rescheduling:</strong> Automatically redistributes missed topics</li>
+                            <li><strong>Micro-Learning:</strong> 10-minute "Coffee Break Challenges"</li>
+                            <li><strong>Gentle Nudges:</strong> Motivational notifications, not guilt trips</li>
+                        </ul>
+                        
+                        <div class="key-insight">
+                            <strong>🔄 Stickiness Factor:</strong> Instead of losing users during low motivation, PrepMatic adapts and brings them back with micro-wins.
+                        </div>
+                        
+                        <p><strong>Result:</strong> Mock test score improves to 38/50 (76%) by Day 25</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 8: Community Features -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">8</div>
+                    <div class="panel-title">Community-Driven Growth</div>
+                    <div class="timeline">Week 4</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">👥</div>
+                        <div style="background: #A5B4FC; color: white; border-radius: 10px; padding: 15px;">
+                            <div style="font-weight: bold;">UPSC 2026 Delhi Batch</div>
+                            <div style="font-size: 0.8em; margin: 5px 0;">📊 Your Rank: #23 of 89</div>
+                            <div style="font-size: 0.8em;">🏆 Geography Leader: Rahul_UPSC</div>
+                            <div style="font-size: 0.8em;">📝 This Week: Group Mock Test</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Social Learning Network</h4>
+                        <p>Community features create network effects:</p>
+                        
+                        <ul>
+                            <li><strong>Study Groups:</strong> Joins Delhi UPSC 2026 batch</li>
+                            <li><strong>Content Sharing:</strong> Uploads her current affairs summaries</li>
+                            <li><strong>Peer Learning:</strong> Learns Geography tips from top performers</li>
+                            <li><strong>Accountability:</strong> Weekly group challenges</li>
+                        </ul>
+                        
+                        <div class="quote">
+                            I'm not just studying alone anymore. Seeing others' progress motivates me to do better.
+                        </div>
+                        
+                        <p><strong>🎁 Gamification:</strong> Earns "Contributor" badge, unlocks premium community content</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 9: 3 Month Progress -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">9</div>
+                    <div class="panel-title">3-Month Transformation</div>
+                    <div class="timeline">Month 3</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">🚀</div>
+                        <div style="background: linear-gradient(135deg, #10B981, #059669); color: white; border-radius: 10px; padding: 15px;">
+                            <div style="font-size: 1.2em; font-weight: bold;">Performance Boost</div>
+                            <div style="margin: 10px 0;">
+                                <div>Mock Scores: 64% → 82% 📈</div>
+                                <div>Geography: 56% → 74% 🗺️</div>
+                                <div>Study Consistency: 78% 📅</div>
+                                <div>Time Efficiency: +25% ⚡</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Measurable Progress</h4>
+                        <p>Three months in, Priya sees dramatic improvement:</p>
+                        
+                        <div class="metrics">
+                            <div class="metric-card">
+                                <div class="metric-value">+18</div>
+                                <div>Points Improved</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">12</div>
+                                <div>Auto-Adjustments</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">45</div>
+                                <div>Day Streak</div>
+                            </div>
+                        </div>
+                        
+                        <ul>
+                            <li><strong>AI Adaptations:</strong> 12 automatic timetable adjustments</li>
+                            <li><strong>Content Evolution:</strong> Questions difficulty increased gradually</li>
+                            <li><strong>Pattern Recognition:</strong> AI identified 6-7 AM as her peak performance time</li>
+                        </ul>
+                        
+                        <div class="key-insight">
+                            <strong>💡 The Magic:</strong> AI doesn't just provide content - it learns how Priya learns best and continuously optimizes her experience.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-arrows">↓</div>
+            
+            <!-- Panel 10: Advanced Features -->
+            <div class="story-panel">
+                <div class="panel-header">
+                    <div class="step-number">10</div>
+                    <div class="panel-title">Advanced AI Features Unlock</div>
+                    <div class="timeline">Month 4-6</div>
+                </div>
+                <div class="story-content">
+                    <div class="visual-element">
+                        <div class="emoji">🤖</div>
+                        <div style="background: #1E3A8A; color: white; border-radius: 10px; padding: 15px;">
+                            <div style="font-weight: bold; margin-bottom: 10px;">AI Study Companion</div>
+                            <div style="font-size: 0.8em; text-align: left;">
+                                🧠 Forgetting Curve Tracking<br>
+                                📝 Custom Question Generation<br>
+                                🔄 Spaced Repetition System<br>
+                                📊 Predictive Performance Analysis
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4>Sophisticated Learning AI</h4>
+                        <p>As Priya continues, advanced features activate:</p>
+                        
+                        <ul>
+                            <li><strong>Forgetting Curve:</strong> Topics from 2 weeks ago surface for revision</li>
+                            <li><strong>Dynamic Questions:</strong> AI creates new questions from her notes</li>
+                            <li><strong>Coaching Integration:</strong> Syncs with her weekend coaching institute</li>
+                            <li><strong>Predictive Analysis:</strong> Forecasts exam readiness</li>
+                        </ul>
+                        
+                        <div class="
